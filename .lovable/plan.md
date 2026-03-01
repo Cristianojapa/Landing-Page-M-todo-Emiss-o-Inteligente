@@ -15,7 +15,7 @@ Landing page profissional de vendas em português BR, com estilo "Azul Viagem" (
 - Subtítulo: "Mesmo que você nunca tenha usado milhas na vida"
 - Foto da Rubia (imagem fornecida) ao lado do texto
 - Botão CTA dourado: **"QUERO COMEÇAR AGORA"** → link Hotmart
-- Preço: $42,00 com garantia de 7 dias
+- Preço: R$197,00 com garantia de 7 dias
 - **Contador regressivo** de oferta por tempo limitado no topo da página
 
 ### 2. ✈️ Para Quem é o Curso
@@ -46,7 +46,7 @@ Landing page profissional de vendas em português BR, com estilo "Azul Viagem" (
 - Acesso imediato após confirmação do pagamento
 - Estude no seu ritmo, de qualquer dispositivo
 - Garantia incondicional de 7 dias
-- Preço acessível: $42,00
+- Preço acessível: R$197,00
 
 ### 7. ❓ FAQ (Perguntas Frequentes)
 - Preciso ter cartão de crédito?

@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
 import feedback1 from "@/assets/feedback-1.png";
 import feedback2 from "@/assets/feedback-2.png";
-import feedback3 from "@/assets/feedback-3.png";
 
-const feedbacks = [feedback1, feedback2, feedback3];
+const feedbacks = [feedback1, feedback2];
 
 const TestimonialsSection = () => {
   return (
@@ -27,7 +26,7 @@ const TestimonialsSection = () => {
           Resultados reais de pessoas como você
         </motion.p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
           {feedbacks.map((img, i) => (
             <motion.div
               key={i}

@@ -5,7 +5,7 @@ const benefits = [
   { icon: Zap, title: "Acesso imediato", desc: "Após confirmação do pagamento" },
   { icon: Monitor, title: "Estude no seu ritmo", desc: "De qualquer dispositivo" },
   { icon: ShieldCheck, title: "Garantia de 7 dias", desc: "Satisfação incondicional" },
-  { icon: DollarSign, title: "Apenas R$42,00", desc: "Investimento acessível" },
+  { icon: DollarSign, title: "Apenas R$197,00", desc: "Investimento acessível" },
 ];
 
 const BenefitsSection = () => {
