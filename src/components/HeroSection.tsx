@@ -45,7 +45,7 @@ const HeroSection = () => {
             </div>
 
             <p className="text-muted-foreground text-sm">
-              💰 Apenas <span className="text-gold font-bold text-lg">R$42,00</span> · Garantia de 7 dias
+              💰 Apenas <span className="text-gold font-bold text-lg">R$197,00</span> · Garantia de 7 dias
             </p>
           </motion.div>
 
