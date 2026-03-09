@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Play } from "lucide-react";
 import feedback1 from "@/assets/feedback-1.png";
 import feedback2 from "@/assets/feedback-2.png";
 
@@ -26,6 +27,30 @@ const TestimonialsSection = () => {
           Resultados reais de pessoas como você
         </motion.p>
 
+        {/* Video testimonial */}
+        <motion.div
+          className="max-w-2xl mx-auto mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <div className="bg-card rounded-xl border border-border overflow-hidden hover:border-gold/30 transition-colors">
+            <video
+              controls
+              preload="metadata"
+              className="w-full h-auto"
+              poster=""
+            >
+              <source src="/videos/feedback-video.mp4" type="video/mp4" />
+              Seu navegador não suporta vídeos.
+            </video>
+            <div className="p-4 text-center">
+              <p className="text-muted-foreground text-sm font-heading">🎬 Depoimento em vídeo de aluno(a)</p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Image testimonials */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
           {feedbacks.map((img, i) => (
             <motion.div
