@@ -1,50 +1,92 @@
 import { motion } from "framer-motion";
+import { BadgeCheck, Coins, PlayCircle, Sparkles, Ticket } from "lucide-react";
+import { BorderBeam } from "./magicui/border-beam";
+import Reveal from "./Reveal";
+import SectionHeading from "./SectionHeading";
 
 const FeedbackVideoSection = () => {
-    return (
-        <section className="py-16 md:py-24 bg-navy-dark/30">
-            <div className="container mx-auto px-4">
-                <motion.h2
-                    className="font-heading font-bold text-2xl md:text-4xl text-center mb-4"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                >
-                    Feedback em <span className="text-gold">Vídeo</span>
-                </motion.h2>
-
-                <motion.p
-                    className="text-muted-foreground text-center mb-12 text-lg"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                >
-                    Veja o depoimento real de quem já transformou sua forma de viajar
-                </motion.p>
-
-                <motion.div
-                    className="max-w-2xl mx-auto"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                >
-                    <div className="relative rounded-2xl overflow-hidden border border-border hover:border-gold/30 transition-colors shadow-2xl shadow-gold/5">
-                        <video
-                            className="w-full h-auto"
-                            controls
-                            preload="metadata"
-                            playsInline
-                            poster=""
-                        >
-                            <source src="/Feedback video.mp4" type="video/mp4" />
-                            Seu navegador não suporta vídeos.
-                        </video>
-                    </div>
-                </motion.div>
+  return (
+    <section id="video" className="section-shell py-20 md:py-28 bg-navy-dark/30">
+      <div className="container grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="relative">
+          <div className="premium-panel relative rounded-[32px] p-4 md:p-6">
+            <div className="absolute left-6 top-6 flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-2 text-xs font-semibold text-gold">
+              <PlayCircle className="h-4 w-4" />
+              depoimento em video
             </div>
-        </section>
-    );
+
+            <div className="relative overflow-hidden rounded-[26px] border border-white/10">
+              <video className="h-full w-full" controls preload="metadata" playsInline>
+                <source src="/Feedback video.mp4" type="video/mp4" />
+                Seu navegador nao suporta videos.
+              </video>
+              <BorderBeam
+                size={200}
+                duration={10}
+                delay={1.5}
+                colorFrom="hsl(var(--gold))"
+                colorTo="hsl(var(--gold-light))"
+                className="rounded-[26px]"
+              />
+            </div>
+          </div>
+
+          <motion.div
+            className="absolute -left-5 bottom-10 hidden rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-muted-foreground lg:block"
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <div className="flex items-center gap-2 text-gold">
+              <Ticket className="h-4 w-4" />
+              emissao real no dia a dia
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="absolute -right-6 top-12 hidden rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-muted-foreground lg:block"
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <div className="flex items-center gap-2 text-gold">
+              <Coins className="h-4 w-4" />
+              economia comprovada
+            </div>
+          </motion.div>
+        </div>
+
+        <Reveal className="space-y-6">
+          <SectionHeading
+            eyebrow="Feedback em video"
+            title="Veja como o metodo"
+            highlight="funciona na pratica"
+            description="O depoimento mostra o caminho real de quem aplicou o passo a passo e passou a emitir com mais seguranca."
+            align="left"
+            className="mb-6"
+          />
+
+          <div className="grid gap-4">
+            {[
+              "Mostra o passo a passo de uma emissao real",
+              "Explica como economizar e evitar erros comuns",
+              "Reforca que o metodo e acessivel mesmo para iniciantes",
+            ].map((item) => (
+              <div key={item} className="elevated-card rounded-2xl px-5 py-4">
+                <div className="flex items-start gap-3 text-foreground/90">
+                  <Sparkles className="mt-0.5 h-4 w-4 text-gold" />
+                  <span className="text-sm leading-relaxed">{item}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-2 text-sm font-semibold text-gold">
+            <BadgeCheck className="h-4 w-4" />
+            garantia incondicional de 7 dias
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
 };
 
 export default FeedbackVideoSection;

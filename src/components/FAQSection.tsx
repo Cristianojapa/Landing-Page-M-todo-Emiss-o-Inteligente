@@ -5,62 +5,57 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import SectionHeading from "./SectionHeading";
+import Reveal from "./Reveal";
 
 const faqs = [
   {
-    q: "Preciso ter cartão de crédito?",
-    a: "Não necessariamente! No curso você vai aprender diferentes formas de acumular milhas, inclusive sem cartão de crédito. Mas ter um cartão potencializa muito seus resultados.",
+    q: "Preciso ter cartao de credito?",
+    a: "Nao necessariamente. No curso voce aprende diferentes formas de acumular milhas, inclusive sem cartao. Ainda assim, um cartao bem escolhido ajuda a acelerar resultados.",
   },
   {
-    q: "O curso funciona mesmo para iniciantes?",
-    a: "Sim! O curso foi pensado especialmente para quem nunca usou milhas na vida. Tudo é explicado de forma simples, passo a passo, do zero.",
+    q: "Funciona para iniciantes?",
+    a: "Sim. O metodo foi construido para quem nunca usou milhas e precisa de um passo a passo claro, sem termos complicados.",
   },
   {
     q: "Por quanto tempo tenho acesso?",
-    a: "Você terá acesso ao conteúdo completo do curso para estudar no seu ritmo, sem pressa.",
+    a: "O acesso ao conteudo do curso fica disponivel para estudar no seu ritmo, com calma.",
   },
   {
-    q: "E se eu não gostar?",
-    a: "Sem problemas! Você tem 7 dias de garantia incondicional. Se não gostar, basta pedir o reembolso e devolvemos 100% do seu investimento.",
+    q: "E se eu nao gostar?",
+    a: "Voce tem 7 dias de garantia. Se nao fizer sentido para voce, basta solicitar o reembolso dentro desse prazo.",
   },
 ];
 
 const FAQSection = () => {
   return (
-    <section className="py-16 md:py-24">
-      <div className="container mx-auto px-4">
-        <motion.h2
-          className="font-heading font-bold text-2xl md:text-4xl text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          Perguntas <span className="text-gold">Frequentes</span>
-        </motion.h2>
+    <section id="faq" className="section-shell py-20 md:py-28">
+      <div className="container">
+        <SectionHeading
+          eyebrow="Duvidas frequentes"
+          title="Perguntas que"
+          highlight="todo iniciante faz"
+          description="Respostas diretas para voce decidir com clareza e sem inseguranca."
+        />
 
-        <motion.div
-          className="max-w-2xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <Accordion type="single" collapsible className="space-y-3">
-            {faqs.map((faq, i) => (
+        <Reveal className="mx-auto max-w-3xl">
+          <Accordion type="single" collapsible className="space-y-4">
+            {faqs.map((faq, index) => (
               <AccordionItem
-                key={i}
-                value={`faq-${i}`}
-                className="bg-card border border-border rounded-xl px-6 data-[state=open]:border-gold/30"
+                key={faq.q}
+                value={`faq-${index}`}
+                className="elevated-card rounded-2xl border border-white/10 px-6"
               >
-                <AccordionTrigger className="font-heading font-semibold text-left hover:text-gold transition-colors">
+                <AccordionTrigger className="font-heading text-left text-base font-semibold text-foreground transition-colors hover:text-gold">
                   {faq.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed">
+                <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
                   {faq.a}
                 </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   );

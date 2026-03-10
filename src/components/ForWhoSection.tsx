@@ -1,55 +1,62 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 import { CreditCard, HelpCircle, Plane, SearchX } from "lucide-react";
+import SectionHeading from "./SectionHeading";
+import { staggerContainer, staggerItem } from "./Reveal";
 
 const profiles = [
   {
     icon: CreditCard,
-    text: "Usa cartão de crédito no dia a dia mas nunca aproveitou milhas",
+    text: "Usa cartão de crédito no dia a dia, mas ainda não transforma isso em milhas.",
   },
   {
     icon: HelpCircle,
-    text: "Acha que milhas são complicadas e não sabe por onde começar",
+    text: "Acha o universo das milhas confuso e quer um caminho claro para começar.",
   },
   {
     icon: Plane,
-    text: "Quer viajar mais gastando muito menos dinheiro",
+    text: "Quer viajar com mais frequência sem comprometer tanto o orçamento.",
   },
   {
     icon: SearchX,
-    text: "Está cansado de dicas soltas e confusas da internet",
+    text: "Cansou de consumir dicas soltas da internet sem saber o que realmente funciona.",
   },
 ];
 
 const ForWhoSection = () => {
   return (
-    <section className="py-16 md:py-24 bg-navy-dark/50">
-      <div className="container mx-auto px-4">
-        <motion.h2
-          className="font-heading font-bold text-2xl md:text-4xl text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          Para Quem é o <span className="text-gold">Curso?</span>
-        </motion.h2>
+    <section id="para-quem" className="section-shell py-20 md:py-28">
+      <div className="container">
+        <SectionHeading
+          eyebrow="Perfil ideal"
+          title="Esse curso foi feito para quem quer"
+          highlight="parar de adivinhar"
+          description="Você não precisa chegar com conhecimento técnico. A proposta aqui é tirar o caos da frente e mostrar um processo simples, aplicável e pensado para iniciantes."
+        />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-          {profiles.map((item, i) => (
-            <motion.div
-              key={i}
-              className="bg-card rounded-xl p-6 text-center border border-border hover:border-gold/30 transition-colors"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+        <motion.div
+          className="grid gap-6 md:grid-cols-2 xl:grid-cols-4"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {profiles.map((item, index) => (
+            <motion.article
+              key={item.text}
+              variants={staggerItem}
+              className="elevated-card group rounded-[28px] p-6"
             >
-              <div className="w-14 h-14 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
-                <item.icon className="w-7 h-7 text-gold" />
+              <div className="mb-6 flex items-center justify-between">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gold/12 text-gold transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                  <item.icon className="h-6 w-6" />
+                </div>
+                <span className="font-heading text-sm font-bold text-gold/70">0{index + 1}</span>
               </div>
-              <p className="text-foreground/90 text-sm leading-relaxed">{item.text}</p>
-            </motion.div>
+
+              <p className="text-base leading-relaxed text-foreground/90">{item.text}</p>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

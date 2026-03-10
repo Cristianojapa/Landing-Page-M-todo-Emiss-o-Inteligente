@@ -1,42 +1,81 @@
 import { motion } from "framer-motion";
+import { Award, Compass, Plane } from "lucide-react";
 import rubiaPhoto from "@/assets/rubia-photo.png";
+import { BorderBeam } from "./magicui/border-beam";
+import Reveal from "./Reveal";
+import SectionHeading from "./SectionHeading";
+
+const highlights = [
+  {
+    icon: Award,
+    title: "10 anos de experiencia",
+    desc: "Especialista em estrategia e programas de milhas.",
+  },
+  {
+    icon: Plane,
+    title: "Resultados comprovados",
+    desc: "Alunos economizando com emissoes mais inteligentes.",
+  },
+  {
+    icon: Compass,
+    title: "Metodo direto",
+    desc: "Passo a passo simples para quem comeca do zero.",
+  },
+];
 
 const AboutSection = () => {
   return (
-    <section className="py-16 md:py-24">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-10">
-          <motion.div
-            className="flex-shrink-0"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-          >
-            <img
-              src={rubiaPhoto}
-              alt="Rubia Lemos"
-              className="w-48 h-48 md:w-56 md:h-56 rounded-full object-cover border-4 border-gold/30 shadow-xl"
-            />
-          </motion.div>
+    <section id="sobre" className="section-shell py-20 md:py-28">
+      <div className="container grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+        <Reveal className="relative mx-auto w-full max-w-[420px]">
+          <div className="premium-panel relative rounded-[36px] p-6 md:p-8">
+            <div className="relative overflow-hidden rounded-[28px] border border-gold/15">
+              <img src={rubiaPhoto} alt="Rubia Lemos" className="h-full w-full object-cover" />
+              <BorderBeam
+                size={220}
+                duration={12}
+                delay={2}
+                colorFrom="hsl(var(--gold))"
+                colorTo="hsl(var(--gold-light))"
+                className="rounded-[28px]"
+              />
+            </div>
+          </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            className="glass-pill absolute -left-6 bottom-8 rounded-2xl px-4 py-3 text-xs text-muted-foreground"
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
           >
-            <h2 className="font-heading font-bold text-2xl md:text-3xl mb-4">
-              Quem é <span className="text-gold">Rubia Lemos?</span>
-            </h2>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              Com mais de <strong className="text-foreground">10 anos de experiência</strong> no mercado digital e na Hotmart, Rubia se tornou referência quando o assunto é <strong className="text-foreground">milhas aéreas</strong>.
-            </p>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              Ela já ajudou centenas de alunos a economizar milhares de reais em viagens, transformando gastos do dia a dia em passagens aéreas com até 90% de desconto.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              Seu método é simples, direto e pensado especialmente para quem está começando do zero — sem jargões complicados, sem enrolação.
-            </p>
+            Educadora e estrategista de milhas
           </motion.div>
+        </Reveal>
+
+        <div>
+          <SectionHeading
+            eyebrow="Mentora"
+            title="Quem e"
+            highlight="Rubia Lemos"
+            description="Profissional com mais de uma decada no mercado digital e experiencia em programas de milhas. O foco aqui e traduzir tudo em um metodo simples e aplicavel."
+            align="left"
+            className="mb-8"
+          />
+
+          <div className="grid gap-4">
+            {highlights.map((item) => (
+              <div key={item.title} className="elevated-card rounded-2xl px-5 py-4">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gold/10 text-gold">
+                    <item.icon className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="font-heading text-base font-bold text-foreground">{item.title}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

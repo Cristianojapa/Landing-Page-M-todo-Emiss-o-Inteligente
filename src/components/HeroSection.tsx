@@ -1,96 +1,230 @@
-import { motion } from "framer-motion";
-import { Plane, Ticket, CreditCard, MapPin, Compass } from "lucide-react";
+﻿import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  BadgeCheck,
+  CheckCircle2,
+  Compass,
+  CreditCard,
+  MapPin,
+  Plane,
+  Sparkles,
+  Ticket,
+  Wallet,
+} from "lucide-react";
 import rubiaPhoto from "@/assets/rubia-photo.png";
-import BlurIn from "./magicui/blur-in";
 import { BorderBeam } from "./magicui/border-beam";
 
 const HOTMART_LINK = "https://hotmart.com/pt-br/marketplace/produtos/curso-de-milhas-para-iniciantes/W100490071D";
 
+const floatingItems = [
+  { Icon: Plane, top: "14%", left: "10%", size: 56, rotate: 35, opacity: 0.14 },
+  { Icon: Ticket, top: "64%", left: "7%", size: 48, rotate: -18, opacity: 0.16 },
+  { Icon: CreditCard, top: "18%", left: "84%", size: 58, rotate: 12, opacity: 0.16 },
+  { Icon: MapPin, top: "76%", left: "86%", size: 44, rotate: -14, opacity: 0.2 },
+  { Icon: Compass, top: "40%", left: "48%", size: 98, rotate: 0, opacity: 0.09 },
+];
+
+const highlights = [
+  "Mesmo para quem nunca usou milhas",
+  "Aulas diretas e aplicáveis",
+  "Estratégias para economizar até 90%",
+];
+
+const metrics = [
+  { value: "+500", label: "alunos impactados" },
+  { value: "7 dias", label: "de garantia" },
+  { value: "12x", label: "de R$ 20,37" },
+];
+
 const HeroSection = () => {
   return (
-    <section className="relative overflow-hidden py-16 md:py-24 z-0">
-      {/* Floating Travel Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        {[
-          { Icon: Plane, top: "15%", left: "10%", size: 60, rotate: 45, opacity: 0.1 },
-          { Icon: Ticket, top: "60%", left: "15%", size: 50, rotate: -20, opacity: 0.15 },
-          { Icon: CreditCard, top: "20%", left: "80%", size: 60, rotate: 15, opacity: 0.15 },
-          { Icon: MapPin, top: "75%", left: "85%", size: 45, rotate: -15, opacity: 0.2 },
-          { Icon: Compass, top: "45%", left: "50%", size: 100, rotate: 0, opacity: 0.08 },
-          { Icon: Plane, top: "85%", left: "40%", size: 40, rotate: -45, opacity: 0.1 },
-        ].map((item, i) => (
+    <section id="inicio" className="section-shell relative overflow-hidden pb-16 pt-8 md:pb-24 md:pt-10">
+      <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_top,_hsl(var(--gold)/0.22),_transparent_30%),linear-gradient(180deg,hsl(var(--navy-dark)),transparent_35%,hsl(var(--background)))]" />
+      <div className="hero-grid absolute inset-0 -z-10 opacity-60" />
+      <div
+        className="absolute inset-0 -z-10 bg-cover bg-center opacity-[0.12]"
+        style={{ backgroundImage: "url('/images/hero-bg.png')" }}
+      />
+
+      <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+        <div className="absolute left-[8%] top-24 h-44 w-44 rounded-full bg-gold/20 blur-[110px] animate-pulse-soft" />
+        <div className="absolute right-[10%] top-20 h-56 w-56 rounded-full bg-primary/10 blur-[120px] animate-drift" />
+        <div className="absolute bottom-8 left-1/2 h-52 w-52 -translate-x-1/2 rounded-full bg-gold/10 blur-[140px] animate-float-soft" />
+
+        {floatingItems.map((item, index) => (
           <motion.div
-            key={i}
+            key={index}
             className="absolute text-gold"
             style={{ top: item.top, left: item.left, opacity: item.opacity }}
-            animate={{
-              y: [0, -30, 0],
-              rotate: [item.rotate, item.rotate + 15, item.rotate],
-            }}
-            transition={{
-              duration: 6 + i * 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
+            animate={{ y: [0, -26, 0], rotate: [item.rotate, item.rotate + 12, item.rotate] }}
+            transition={{ duration: 6 + index * 1.8, repeat: Infinity, ease: "easeInOut" }}
           >
             <item.Icon width={item.size} height={item.size} />
           </motion.div>
         ))}
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
-          {/* Text */}
+      <div className="container relative z-10">
+        <motion.header
+          className="premium-panel mb-10 flex flex-col gap-5 rounded-[32px] px-5 py-4 md:flex-row md:items-center md:justify-between md:px-8"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65 }}
+        >
+          <div className="flex items-center gap-4">
+            <div className="gold-glow flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl border border-gold/20 bg-white p-0">
+              <img
+                src="/images/course-cover.webp"
+                alt="Capa do curso Metodo Emissao Inteligente"
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div>
+              <p className="font-heading text-lg font-bold text-foreground md:text-xl">Método Emissão Inteligente</p>
+              <p className="text-sm text-muted-foreground">Curso prático para aprender milhas sem complicação</p>
+            </div>
+          </div>
+
+          <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
+            <a href="#para-quem" className="transition-colors hover:text-gold">Para quem é</a>
+            <a href="#conteudo" className="transition-colors hover:text-gold">Conteúdo</a>
+            <a href="#provas" className="transition-colors hover:text-gold">Provas</a>
+            <a href="#faq" className="transition-colors hover:text-gold">Dúvidas</a>
+          </nav>
+        </motion.header>
+
+        <div className="grid items-start gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <motion.div
-            className="flex-1 text-center md:text-left"
-            initial={{ opacity: 0, y: 30 }}
+            className="text-center lg:text-left"
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
           >
-            <span className="inline-block bg-primary/20 text-gold font-heading font-semibold text-sm px-4 py-1.5 rounded-full mb-6 tracking-wide">
-              MEI Método Emissao inteligente
+            <span className="glass-pill inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold uppercase tracking-[0.24em] text-gold">
+              <Sparkles className="h-4 w-4" />
+              curso para iniciantes em milhas
             </span>
 
-            <BlurIn className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight mb-6 mt-4">
-              Aprenda a Viajar Pagando até{" "}
-              <span className="text-gold">90% Menos</span> Usando Milhas
-            </BlurIn>
+            <h1 className="mt-6 font-heading text-3xl font-black leading-[1.05] text-foreground sm:text-4xl lg:text-5xl xl:text-6xl">
+              Aprenda a viajar pagando até <span className="text-gold">90% menos</span> com um método simples e aplicável.
+            </h1>
 
-            <p className="text-muted-foreground text-lg md:text-xl mb-8 max-w-lg mx-auto md:mx-0">
-              Mesmo que você nunca tenha usado milhas na vida
+            <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl lg:mx-0">
+              Entenda como acumular, organizar e emitir passagens com inteligência, mesmo começando absolutamente do zero.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center gap-4 mb-6">
+            <div className="mt-6 grid gap-3 sm:grid-cols-3">
+              {highlights.map((item) => (
+                <div key={item} className="glass-pill rounded-2xl px-4 py-2.5 text-base text-foreground/90">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
+                    <span>{item}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center lg:justify-start justify-center">
               <a
                 href={HOTMART_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-gradient-to-r from-gold to-gold-light text-primary-foreground font-heading font-bold text-lg px-10 py-4 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+                className="gold-glow inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-gold to-gold-light px-7 py-3.5 font-heading text-sm font-extrabold text-primary-foreground transition-transform duration-300 hover:scale-[1.03] sm:text-base"
               >
-                QUERO COMEÇAR AGORA
+                Garantir minha vaga
+                <ArrowRight className="h-4 w-4" />
+              </a>
+
+              <a
+                href="#provas"
+                className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-7 py-3.5 font-heading text-sm font-bold text-foreground/90 transition-colors hover:border-gold/30 hover:text-gold sm:text-base"
+              >
+                Ver resultados
               </a>
             </div>
 
-            <p className="text-muted-foreground text-sm">
-              💰 Apenas <span className="text-gold font-bold text-lg">12x de R$ 20,37</span> (ou R$ 197 à vista) · Garantia de 7 dias
-            </p>
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-4 text-base text-muted-foreground lg:justify-start">
+              <span className="inline-flex items-center gap-2">
+                <Wallet className="h-4 w-4 text-gold" />
+                12x de R$ 20,37 ou R$ 197 à vista
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <BadgeCheck className="h-4 w-4 text-gold" />
+                garantia incondicional de 7 dias
+              </span>
+            </div>
+
+            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+              {metrics.map((metric, index) => (
+                <motion.div
+                  key={metric.label}
+                  className="elevated-card rounded-3xl px-4 py-4 text-left"
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.25 + index * 0.1 }}
+                >
+                  <div className="font-heading text-2xl font-black text-gold">{metric.value}</div>
+                  <div className="mt-1 text-base text-muted-foreground">{metric.label}</div>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
 
-          {/* Photo */}
           <motion.div
-            className="flex-shrink-0 relative z-10"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative mx-auto w-full max-w-[480px] lg:-mt-6"
+            initial={{ opacity: 0, scale: 0.94, y: 24 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="relative rounded-full">
-              <div className="absolute -inset-4 bg-gradient-to-br from-gold/20 to-transparent rounded-full blur-2xl" />
-              <img
-                src={rubiaPhoto}
-                alt="Rubia Lemos - Especialista em Milhas"
-                className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover rounded-full border-4 border-gold/30 shadow-2xl"
-              />
-              <BorderBeam size={200} duration={12} delay={9} colorFrom="hsl(var(--gold))" colorTo="hsl(var(--gold-light))" className="rounded-full" />
+            <div className="premium-panel relative rounded-[36px] p-6 md:p-8">
+              <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-gold/70 to-transparent" />
+
+              <div className="relative mx-auto aspect-square max-w-[340px] overflow-hidden rounded-[32px] border border-gold/15 bg-[radial-gradient(circle_at_top,_hsl(var(--gold)/0.18),_transparent_35%),linear-gradient(180deg,hsl(var(--navy-dark)),hsl(var(--card)))] p-4">
+                <div className="absolute inset-0 rounded-[32px] border border-white/5" />
+                <div className="absolute inset-4 rounded-[28px] bg-gradient-to-br from-gold/10 to-transparent blur-3xl" />
+                <img
+                  src={rubiaPhoto}
+                  alt="Rubia Lemos, especialista em milhas"
+                  className="relative z-10 h-full w-full rounded-[28px] object-cover"
+                />
+                <BorderBeam
+                  size={220}
+                  duration={12}
+                  delay={2}
+                  colorFrom="hsl(var(--gold))"
+                  colorTo="hsl(var(--gold-light))"
+                  className="rounded-[32px]"
+                />
+
+                <motion.div
+                  className="glass-pill pointer-events-none absolute left-5 top-5 hidden max-w-[200px] rounded-2xl px-3 py-2 text-xs shadow-2xl xl:flex"
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <div className="font-heading text-sm font-bold text-foreground">Aulas passo a passo</div>
+                  <div className="text-[11px] text-muted-foreground">Sem enrolacao e sem jargao</div>
+                </motion.div>
+
+                <motion.div
+                  className="glass-pill pointer-events-none absolute bottom-9 right-5 hidden max-w-[200px] rounded-2xl px-3 py-2 text-xs shadow-2xl xl:flex"
+                  animate={{ y: [0, 10, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <div className="font-heading text-sm font-bold text-gold">Economia real</div>
+                  <div className="text-[11px] text-muted-foreground">Transforme gastos em passagens</div>
+                </motion.div>
+              </div>
+
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p className="text-[11px] uppercase tracking-[0.22em] text-gold">para quem quer</p>
+                  <p className="mt-2 text-base text-foreground/90">Viajar mais, pagar menos e finalmente entender como as milhas funcionam.</p>
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p className="text-[11px] uppercase tracking-[0.22em] text-gold">resultado esperado</p>
+                  <p className="mt-2 text-base text-foreground/90">Montar sua estratégia e emitir com mais segurança.</p>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>

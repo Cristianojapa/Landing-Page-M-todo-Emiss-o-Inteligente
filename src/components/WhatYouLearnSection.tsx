@@ -1,48 +1,99 @@
-import { motion } from "framer-motion";
-import { Rocket, Coins, CreditCard, Ticket, ShieldAlert } from "lucide-react";
+﻿import { motion } from "framer-motion";
+import { Coins, CreditCard, Rocket, ShieldAlert, Ticket } from "lucide-react";
+import Reveal, { staggerContainer, staggerItem } from "./Reveal";
+import SectionHeading from "./SectionHeading";
 import ShineBorder from "./magicui/shine-border";
-import BlurIn from "./magicui/blur-in";
 
 const topics = [
-  { icon: Rocket, title: "Como começar do zero no mundo das milhas" },
-  { icon: Coins, title: "Como acumular milhas com gastos do dia a dia" },
-  { icon: CreditCard, title: "Como escolher e usar cartões de forma estratégica" },
-  { icon: Ticket, title: "Como resgatar passagens com milhas" },
-  { icon: ShieldAlert, title: "Como evitar erros que fazem perder dinheiro" },
+  {
+    icon: Rocket,
+    title: "Como começar do zero no universo das milhas",
+    description: "Entenda os fundamentos sem linguagem complicada e monte sua base com segurança.",
+  },
+  {
+    icon: Coins,
+    title: "Como acumular milhas com gastos que você já faz",
+    description: "Aprenda a enxergar oportunidades no seu dia a dia sem precisar inventar novas despesas.",
+  },
+  {
+    icon: CreditCard,
+    title: "Como escolher cartões e programas com estratégia",
+    description: "Saiba o que vale a pena, o que evitar e como não cair em promessas rasas.",
+  },
+  {
+    icon: Ticket,
+    title: "Como pesquisar e emitir passagens com mais inteligência",
+    description: "Descubra a lógica por trás das emissões para fazer resgates mais vantajosos.",
+  },
+  {
+    icon: ShieldAlert,
+    title: "Como evitar erros que fazem muita gente perder dinheiro",
+    description: "Fuja dos atalhos perigosos e das decisões que queimam pontos ou travam resultados.",
+  },
 ];
 
 const WhatYouLearnSection = () => {
   return (
-    <section className="py-16 md:py-24">
-      <div className="container mx-auto px-4">
-        <BlurIn
-          className="font-heading font-bold text-2xl md:text-4xl text-center mb-12"
-          duration={0.8}
-        >
-          O Que Você Vai <span className="text-gold">Aprender</span>
-        </BlurIn>
+    <section id="conteudo" className="section-shell py-20 md:py-28">
+      <div className="container grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+        <Reveal className="lg:sticky lg:top-28">
+          <SectionHeading
+            eyebrow="Conteúdo do curso"
+            title="O que você vai"
+            highlight="dominar"
+            description="A formação foi organizada para transformar teoria em ação. Você entende a lógica, aprende a tomar decisões melhores e sai com um plano mais claro para emitir suas viagens."
+            align="left"
+            className="mb-8"
+          />
 
-        <div className="max-w-2xl mx-auto space-y-4">
-          {topics.map((topic, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-            >
+          <div className="premium-panel rounded-[32px] p-6 md:p-8">
+            <p className="text-sm uppercase tracking-[0.28em] text-gold">resultado prático</p>
+            <p className="mt-4 text-lg leading-relaxed text-foreground/90">
+              Você vai sair sabendo onde concentrar seus esforços, como organizar seu acúmulo e como emitir com muito mais confiança.
+            </p>
+
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <div className="font-heading text-2xl font-black text-gold">5 módulos</div>
+                <p className="mt-1 text-sm text-muted-foreground">para entender a jornada inteira do iniciante à emissão</p>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <div className="font-heading text-2xl font-black text-gold">100% online</div>
+                <p className="mt-1 text-sm text-muted-foreground">acesso no seu ritmo, de qualquer dispositivo</p>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+
+        <motion.div
+          className="space-y-4"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
+          {topics.map((topic) => (
+            <motion.div key={topic.title} variants={staggerItem}>
               <ShineBorder
-                className="flex flex-row items-center gap-4 bg-card rounded-xl p-5 border border-border w-full !justify-start relative overflow-hidden"
-                color={["hsl(var(--gold))", "hsl(var(--primary))", "hsl(var(--gold-light))"]}
+                className="rounded-[28px] border border-white/8 bg-card/70 px-3 py-3"
+                color={["hsl(var(--gold))", "hsl(var(--gold-light))", "hsl(var(--primary))"]}
+                duration={12}
               >
-                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
-                  <topic.icon className="w-6 h-6 text-gold" />
+                <div className="elevated-card rounded-[22px] p-5 md:p-6">
+                  <div className="flex flex-col gap-4 md:flex-row md:items-start">
+                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gold/10 text-gold">
+                      <topic.icon className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <h3 className="font-heading text-xl font-bold text-foreground">{topic.title}</h3>
+                      <p className="mt-2 text-base leading-relaxed text-muted-foreground">{topic.description}</p>
+                    </div>
+                  </div>
                 </div>
-                <p className="font-heading font-semibold text-foreground/90">{topic.title}</p>
               </ShineBorder>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
