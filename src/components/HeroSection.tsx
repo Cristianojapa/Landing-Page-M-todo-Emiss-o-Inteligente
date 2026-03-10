@@ -1,4 +1,5 @@
-﻿import { motion } from "framer-motion";
+﻿import { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import {
   ArrowRight,
   BadgeCheck,
@@ -37,8 +38,24 @@ const metrics = [
 ];
 
 const HeroSection = () => {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const imageParallax = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reduceMotion ? [0, 0] : [24, -24],
+  );
+
   return (
-    <section id="inicio" className="section-shell relative overflow-hidden pb-16 pt-8 md:pb-24 md:pt-10">
+    <section
+      id="inicio"
+      ref={sectionRef}
+      className="section-shell relative overflow-hidden pb-16 pt-8 md:pb-24 md:pt-10"
+    >
       <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_top,_hsl(var(--gold)/0.22),_transparent_30%),linear-gradient(180deg,hsl(var(--navy-dark)),transparent_35%,hsl(var(--background)))]" />
       <div className="hero-grid absolute inset-0 -z-10 opacity-60" />
       <div
@@ -129,18 +146,20 @@ const HeroSection = () => {
                 href={HOTMART_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="gold-glow inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-gold to-gold-light px-7 py-3.5 font-heading text-sm font-extrabold text-primary-foreground transition-transform duration-300 hover:scale-[1.03] sm:text-base"
+                className="gold-glow btn-shimmer inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-gold to-gold-light px-7 py-3.5 font-heading text-sm font-extrabold text-primary-foreground transition-transform duration-300 hover:scale-[1.03] sm:text-base"
               >
                 Garantir minha vaga
                 <ArrowRight className="h-4 w-4" />
               </a>
 
-              <a
+              <motion.a
                 href="#provas"
-                className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-7 py-3.5 font-heading text-sm font-bold text-foreground/90 transition-colors hover:border-gold/30 hover:text-gold sm:text-base"
+                className="btn-shimmer inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-7 py-3.5 font-heading text-sm font-bold text-foreground/90 transition-colors hover:border-gold/30 hover:text-gold sm:text-base"
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.98 }}
               >
                 Ver resultados
-              </a>
+              </motion.a>
             </div>
 
             <div className="mt-5 flex flex-wrap items-center justify-center gap-4 text-base text-muted-foreground lg:justify-start">
@@ -172,6 +191,7 @@ const HeroSection = () => {
 
           <motion.div
             className="relative mx-auto w-full max-w-[480px] lg:-mt-6"
+            style={{ y: imageParallax }}
             initial={{ opacity: 0, scale: 0.94, y: 24 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -234,3 +254,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+

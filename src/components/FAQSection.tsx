@@ -6,7 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import SectionHeading from "./SectionHeading";
-import Reveal from "./Reveal";
+import Reveal, { staggerContainer, staggerItem } from "./Reveal";
 
 const faqs = [
   {
@@ -28,6 +28,8 @@ const faqs = [
 ];
 
 const FAQSection = () => {
+  const MotionAccordionItem = motion(AccordionItem);
+
   return (
     <section id="faq" className="section-shell py-20 md:py-28">
       <div className="container">
@@ -39,22 +41,30 @@ const FAQSection = () => {
         />
 
         <Reveal className="mx-auto max-w-3xl">
-          <Accordion type="single" collapsible className="space-y-4">
-            {faqs.map((faq, index) => (
-              <AccordionItem
-                key={faq.q}
-                value={`faq-${index}`}
-                className="elevated-card rounded-2xl border border-white/10 px-6"
-              >
-                <AccordionTrigger className="font-heading text-left text-base font-semibold text-foreground transition-colors hover:text-gold">
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <Accordion type="single" collapsible className="space-y-4">
+              {faqs.map((faq, index) => (
+                <MotionAccordionItem
+                  key={faq.q}
+                  variants={staggerItem}
+                  value={`faq-${index}`}
+                  className="elevated-card rounded-2xl border border-white/10 px-6"
+                >
+                  <AccordionTrigger className="font-heading text-left text-base font-semibold text-foreground transition-colors hover:text-gold">
+                    {faq.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
+                    {faq.a}
+                  </AccordionContent>
+                </MotionAccordionItem>
+              ))}
+            </Accordion>
+          </motion.div>
         </Reveal>
       </div>
     </section>

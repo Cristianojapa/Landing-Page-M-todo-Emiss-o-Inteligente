@@ -29,12 +29,13 @@ const AboutSection = () => {
       <div className="container grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
         <Reveal className="relative mx-auto w-full max-w-[420px]">
           <div className="premium-panel relative rounded-[36px] p-6 md:p-8">
-            <div className="relative overflow-hidden rounded-[28px] border border-gold/15">
+            <div className="relative overflow-hidden rounded-[28px]">
               <img src={rubiaPhoto} alt="Rubia Lemos" className="h-full w-full object-cover" />
               <BorderBeam
-                size={220}
-                duration={12}
-                delay={2}
+                size={120}
+                duration={6}
+                delay={0}
+                borderWidth={1}
                 colorFrom="hsl(var(--gold))"
                 colorTo="hsl(var(--gold-light))"
                 className="rounded-[28px]"

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, BadgeCheck, ShieldCheck, Sparkles } from "lucide-react";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
+import Globe from "./magicui/globe";
 
 const HOTMART_LINK =
   "https://hotmart.com/pt-br/marketplace/produtos/curso-de-milhas-para-iniciantes/W100490071D";
@@ -10,8 +11,12 @@ const FinalCTASection = () => {
   return (
     <section id="cta" className="section-shell relative overflow-hidden py-24 md:py-32">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_hsl(var(--gold)/0.18),_transparent_35%),linear-gradient(180deg,hsl(var(--navy-dark)),hsl(var(--background)))]" />
-
-      <div className="container">
+      <div className="pointer-events-auto absolute -bottom-28 right-[-140px] z-0 hidden h-[380px] w-[380px] opacity-75 lg:block">
+        <div className="relative h-full w-full">
+          <Globe className="top-0" />
+        </div>
+      </div>
+      <div className="container relative z-10">
         <Reveal className="premium-panel mx-auto max-w-5xl rounded-[40px] px-6 py-12 text-center md:px-10">
           <SectionHeading
             eyebrow="Ultima chamada"
@@ -35,7 +40,7 @@ const FinalCTASection = () => {
             href={HOTMART_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="gold-glow mt-10 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-gold to-gold-light px-10 py-5 font-heading text-base font-extrabold text-primary-foreground transition-transform duration-300 hover:scale-[1.03]"
+            className="gold-glow btn-shimmer mt-10 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-gold to-gold-light px-10 py-5 font-heading text-base font-extrabold text-primary-foreground transition-transform duration-300 hover:scale-[1.03]"
             whileHover={{ scale: 1.03 }}
           >
             garantir minha vaga agora

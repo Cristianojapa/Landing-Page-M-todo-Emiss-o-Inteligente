@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
 import { BadgeCheck, Coins, PlayCircle, Sparkles, Ticket } from "lucide-react";
 import { BorderBeam } from "./magicui/border-beam";
-import Reveal from "./Reveal";
+import Reveal, { staggerContainer, staggerItem } from "./Reveal";
 import SectionHeading from "./SectionHeading";
 
 const FeedbackVideoSection = () => {
   return (
     <section id="video" className="section-shell py-20 md:py-28 bg-navy-dark/30">
       <div className="container grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-        <div className="relative">
+        <Reveal className="relative">
           <div className="premium-panel relative rounded-[32px] p-4 md:p-6">
             <div className="absolute left-6 top-6 flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-2 text-xs font-semibold text-gold">
               <PlayCircle className="h-4 w-4" />
@@ -17,7 +17,7 @@ const FeedbackVideoSection = () => {
 
             <div className="relative overflow-hidden rounded-[26px] border border-white/10">
               <video className="h-full w-full" controls preload="metadata" playsInline>
-                <source src="/Feedback video.mp4" type="video/mp4" />
+                <source src="/feedback-video.mp4" type="video/mp4" />
                 Seu navegador nao suporta videos.
               </video>
               <BorderBeam
@@ -30,7 +30,7 @@ const FeedbackVideoSection = () => {
               />
             </div>
           </div>
-        </div>
+        </Reveal>
 
         <Reveal className="space-y-6">
           <SectionHeading
@@ -42,20 +42,26 @@ const FeedbackVideoSection = () => {
             className="mb-6"
           />
 
-          <div className="grid gap-4">
+          <motion.div
+            className="grid gap-4"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             {[
               "Mostra o passo a passo de uma emissao real",
               "Explica como economizar e evitar erros comuns",
               "Reforca que o metodo e acessivel mesmo para iniciantes",
             ].map((item) => (
-              <div key={item} className="elevated-card rounded-2xl px-5 py-4">
+              <motion.div key={item} variants={staggerItem} className="elevated-card rounded-2xl px-5 py-4">
                 <div className="flex items-start gap-3 text-foreground/90">
                   <Sparkles className="mt-0.5 h-4 w-4 text-gold" />
                   <span className="text-sm leading-relaxed">{item}</span>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           <div className="flex flex-wrap items-center gap-3">
             <motion.div

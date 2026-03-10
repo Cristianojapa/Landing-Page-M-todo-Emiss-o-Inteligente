@@ -1,7 +1,9 @@
 ﻿import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Clock3, ShieldCheck, Sparkles } from "lucide-react";
 
 const CountdownTimer = () => {
+  const reduceMotion = useReducedMotion();
   const [timeLeft, setTimeLeft] = useState(() => {
     const saved = localStorage.getItem("cmi-countdown-end");
     if (saved) {
@@ -57,9 +59,18 @@ const CountdownTimer = () => {
               key={item.label}
               className="gold-glow rounded-xl border border-gold/20 bg-gradient-to-b from-gold/15 to-gold/5 px-2.5 py-1.5 text-center min-w-[62px]"
             >
-              <div className="font-heading text-base font-extrabold text-foreground md:text-lg">
-                {item.value}
-              </div>
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={item.value}
+                  className="font-heading text-base font-extrabold text-foreground md:text-lg"
+                  initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={reduceMotion ? { opacity: 1 } : { opacity: 0, y: -8 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {item.value}
+                </motion.div>
+              </AnimatePresence>
               <div className="text-[10px] uppercase tracking-[0.18em] text-gold/90">
                 {item.label}
               </div>
@@ -77,3 +88,4 @@ const CountdownTimer = () => {
 };
 
 export default CountdownTimer;
+
