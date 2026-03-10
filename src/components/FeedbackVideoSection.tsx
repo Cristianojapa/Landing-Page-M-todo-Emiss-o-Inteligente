@@ -30,28 +30,6 @@ const FeedbackVideoSection = () => {
               />
             </div>
           </div>
-
-          <motion.div
-            className="absolute -left-5 bottom-10 hidden rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-muted-foreground lg:block"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <div className="flex items-center gap-2 text-gold">
-              <Ticket className="h-4 w-4" />
-              emissao real no dia a dia
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="absolute -right-6 top-12 hidden rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-muted-foreground lg:block"
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <div className="flex items-center gap-2 text-gold">
-              <Coins className="h-4 w-4" />
-              economia comprovada
-            </div>
-          </motion.div>
         </div>
 
         <Reveal className="space-y-6">
@@ -77,6 +55,30 @@ const FeedbackVideoSection = () => {
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3">
+            <motion.div
+              className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-muted-foreground"
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <div className="flex items-center gap-2 text-gold">
+                <Ticket className="h-4 w-4" />
+                emissao real no dia a dia
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-muted-foreground"
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <div className="flex items-center gap-2 text-gold">
+                <Coins className="h-4 w-4" />
+                economia comprovada
+              </div>
+            </motion.div>
           </div>
 
           <div className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-2 text-sm font-semibold text-gold">

@@ -1,7 +1,6 @@
 import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
-import { motion } from "framer-motion";
-import { Plane, Quote, Sparkles, Star, Ticket } from "lucide-react";
+import { Quote, Sparkles, Star } from "lucide-react";
 import feedback1 from "@/assets/feedback-1.png";
 import feedback2 from "@/assets/feedback-2.png";
 import feedback3 from "@/assets/feedback-3.png";
@@ -87,22 +86,6 @@ const TestimonialsSection = () => {
               <circle cx="220" cy="300" r="6" fill="currentColor" />
             </svg>
 
-            <motion.div
-              className="absolute -left-6 top-16 hidden rounded-full border border-gold/30 bg-gold/10 p-3 text-gold lg:flex"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <Plane className="h-5 w-5" />
-            </motion.div>
-
-            <motion.div
-              className="absolute -right-5 bottom-10 hidden rounded-full border border-gold/30 bg-gold/10 p-3 text-gold lg:flex"
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <Ticket className="h-5 w-5" />
-            </motion.div>
-
             <div className="absolute -right-4 top-6 hidden items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-muted-foreground lg:flex">
               <Sparkles className="h-3.5 w-3.5 text-gold" />
               arraste ou passe o mouse
@@ -111,7 +94,7 @@ const TestimonialsSection = () => {
             <Carousel
               opts={{ align: "start", loop: true }}
               plugins={[autoplay.current]}
-              className="relative"
+              className="relative overflow-visible"
             >
               <CarouselContent className="-ml-4">
                 {carouselItems.map((img, index) => (
@@ -131,8 +114,8 @@ const TestimonialsSection = () => {
                 ))}
               </CarouselContent>
 
-              <CarouselPrevious className="-left-4 top-1/2 hidden -translate-y-1/2 border-white/10 bg-navy-dark/80 text-foreground hover:border-gold/40 hover:text-gold md:flex" />
-              <CarouselNext className="-right-4 top-1/2 hidden -translate-y-1/2 border-white/10 bg-navy-dark/80 text-foreground hover:border-gold/40 hover:text-gold md:flex" />
+              <CarouselPrevious className="left-2 top-1/2 hidden -translate-y-1/2 border-white/10 bg-navy-dark/80 text-foreground hover:border-gold/40 hover:text-gold md:flex" />
+              <CarouselNext className="right-2 top-1/2 hidden -translate-y-1/2 border-white/10 bg-navy-dark/80 text-foreground hover:border-gold/40 hover:text-gold md:flex" />
             </Carousel>
           </div>
         </div>
