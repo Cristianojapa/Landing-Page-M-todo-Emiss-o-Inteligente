@@ -17,7 +17,7 @@ const FinalCTASection = () => {
           </h2>
 
           <p className="text-muted-foreground text-lg md:text-xl mb-8 max-w-xl mx-auto">
-            Comece hoje a transformar seus gastos em viagens dos sonhos. Por apenas <span className="text-gold font-bold">R$197,00</span>.
+            Comece hoje a transformar seus gastos em viagens dos sonhos. Por apenas <span className="text-gold font-bold">12x de R$ 20,37</span> ou R$ 197,00 à vista.
           </p>
 
           <a

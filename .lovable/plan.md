@@ -39,7 +39,7 @@ Landing page profissional de vendas em português BR, com estilo "Azul Viagem" (
 
 ### 5. 👩‍💼 Sobre a Rubia Lemos
 - Foto da Rubia com passaporte e cartões
-- Bio: 6 anos de experiência na Hotmart, especialista em milhas
+- Bio: 10 anos de experiência na Hotmart, especialista em milhas
 - Credibilidade: resultados reais de alunos
 
 ### 6. ✅ Benefícios e Garantia
