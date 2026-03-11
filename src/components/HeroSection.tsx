@@ -14,6 +14,8 @@ import {
 } from "lucide-react";
 import rubiaPhoto from "@/assets/rubia-photo.png";
 import { BorderBeam } from "./magicui/border-beam";
+import BlurIn from "./magicui/blur-in";
+import ShineBorder from "./magicui/shine-border";
 
 const HOTMART_LINK = "https://hotmart.com/pt-br/marketplace/produtos/curso-de-milhas-para-iniciantes/W100490071D";
 
@@ -122,9 +124,9 @@ const HeroSection = () => {
               curso para iniciantes em milhas
             </span>
 
-            <h1 className="mt-6 font-heading text-3xl font-black leading-[1.05] text-foreground sm:text-4xl lg:text-5xl xl:text-6xl">
+            <BlurIn duration={1.2} className="mt-6 font-heading text-3xl font-black leading-[1.05] text-foreground sm:text-4xl lg:text-5xl xl:text-6xl">
               Aprenda a Viajar Pagando até <span className="text-gold">90% Menos</span> Usando Milhas
-            </h1>
+            </BlurIn>
 
             <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl lg:mx-0">
               Entenda como acumular, organizar e emitir passagens com inteligência, mesmo começando absolutamente do zero.
@@ -173,79 +175,51 @@ const HeroSection = () => {
               </span>
             </div>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
-              {metrics.map((metric, index) => (
-                <motion.div
-                  key={metric.label}
-                  className="elevated-card rounded-3xl px-4 py-4 text-left"
-                  initial={{ opacity: 0, y: 18 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.25 + index * 0.1 }}
-                >
-                  <div className="font-heading text-2xl font-black text-gold">{metric.value}</div>
-                  <div className="mt-1 text-base text-muted-foreground">{metric.label}</div>
-                </motion.div>
-              ))}
-            </div>
           </motion.div>
 
           <motion.div
-            className="relative mx-auto w-full max-w-[480px] lg:-mt-6"
+            className="relative mx-auto w-full max-w-[480px] lg:mt-4"
             style={{ y: imageParallax }}
             initial={{ opacity: 0, scale: 0.94, y: 24 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="premium-panel relative rounded-[36px] p-6 md:p-8">
-              <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-gold/70 to-transparent" />
+            <ShineBorder
+              className="relative mx-auto aspect-square w-full max-w-[400px] overflow-hidden rounded-full p-4 shadow-[0_0_30px_rgba(255,215,0,0.15)] bg-[radial-gradient(circle_at_top,_hsl(var(--gold)/0.18),_transparent_35%),linear-gradient(180deg,hsl(var(--navy-dark)),hsl(var(--card)))]"
+              color={["#d4af37", "#f9e596", "#b08d28"]}
+              borderWidth={4}
+              borderRadius={9999}
+              duration={8}
+            >
+              <div className="absolute inset-0 rounded-full border border-white/5" />
+              <div className="absolute inset-4 rounded-full bg-gradient-to-br from-gold/10 to-transparent blur-3xl" />
 
-              <div className="relative mx-auto aspect-square max-w-[340px] overflow-hidden rounded-[32px] border border-gold/15 bg-[radial-gradient(circle_at_top,_hsl(var(--gold)/0.18),_transparent_35%),linear-gradient(180deg,hsl(var(--navy-dark)),hsl(var(--card)))] p-4">
-                <div className="absolute inset-0 rounded-[32px] border border-white/5" />
-                <div className="absolute inset-4 rounded-[28px] bg-gradient-to-br from-gold/10 to-transparent blur-3xl" />
+              <div className="relative z-10 h-full w-full overflow-hidden rounded-full">
                 <img
                   src={rubiaPhoto}
                   alt="Rubia Lemos, especialista em milhas"
-                  className="relative z-10 h-full w-full rounded-[28px] object-cover"
+                  className="h-full w-full object-cover"
                 />
-                <BorderBeam
-                  size={220}
-                  duration={12}
-                  delay={2}
-                  colorFrom="hsl(var(--gold))"
-                  colorTo="hsl(var(--gold-light))"
-                  className="rounded-[32px]"
-                />
-
-                <motion.div
-                  className="glass-pill pointer-events-none absolute left-5 top-5 hidden max-w-[200px] rounded-2xl px-3 py-2 text-xs shadow-2xl xl:flex"
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <div className="font-heading text-sm font-bold text-foreground">Aulas passo a passo</div>
-                  <div className="text-[11px] text-muted-foreground">Sem enrolacao e sem jargao</div>
-                </motion.div>
-
-                <motion.div
-                  className="glass-pill pointer-events-none absolute bottom-9 right-5 hidden max-w-[200px] rounded-2xl px-3 py-2 text-xs shadow-2xl xl:flex"
-                  animate={{ y: [0, 10, 0] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <div className="font-heading text-sm font-bold text-gold">Economia real</div>
-                  <div className="text-[11px] text-muted-foreground">Transforme gastos em passagens</div>
-                </motion.div>
               </div>
+            </ShineBorder>
 
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <p className="text-[11px] uppercase tracking-[0.22em] text-gold">para quem quer</p>
-                  <p className="mt-2 text-base text-foreground/90">Viajar mais, pagar menos e finalmente entender como as milhas funcionam.</p>
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <p className="text-[11px] uppercase tracking-[0.22em] text-gold">resultado esperado</p>
-                  <p className="mt-2 text-base text-foreground/90">Montar sua estratégia e emitir com mais segurança.</p>
-                </div>
-              </div>
-            </div>
+            <motion.div
+              className="glass-pill pointer-events-none absolute -left-20 top-20 hidden max-w-[200px] z-20 flex-col rounded-2xl px-4 py-3 text-xs shadow-2xl xl:flex"
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <div className="font-heading text-sm font-bold text-foreground">Aulas passo a passo</div>
+              <div className="text-[11px] text-muted-foreground">Sem enrolacao e sem jargao</div>
+            </motion.div>
+
+            <motion.div
+              className="glass-pill pointer-events-none absolute -right-20 bottom-20 hidden max-w-[200px] z-20 flex-col rounded-2xl px-4 py-3 text-xs shadow-2xl xl:flex"
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <div className="font-heading text-sm font-bold text-gold">Economia real</div>
+              <div className="text-[11px] text-muted-foreground">Transforme gastos em passagens</div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
