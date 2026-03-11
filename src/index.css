@@ -117,6 +117,7 @@
   filter: blur(80px);
   z-index: -1;
   opacity: 0.8;
+  animation: glow-drift 16s ease-in-out infinite;
 }
 
 .premium-panel {
@@ -249,6 +250,37 @@
   }
 }
 
+@keyframes glow-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(36px, -22px, 0) scale(1.08);
+  }
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-130%) skewX(-12deg);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  55% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(130%) skewX(-12deg);
+    opacity: 0;
+  }
+}
+
 @keyframes route-dash {
   to {
     stroke-dashoffset: -640;
@@ -270,6 +302,24 @@
 .route-dash {
   stroke-dasharray: 10 14;
   animation: route-dash 14s linear infinite;
+}
+
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: -40% auto -40% -35%;
+  width: 60%;
+  background: linear-gradient(120deg, transparent, hsl(var(--foreground) / 0.5), transparent);
+  transform: translateX(-130%) skewX(-12deg);
+  animation: shimmer-sweep 5s ease-in-out infinite;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  will-change: transform;
 }
 
 @media (prefers-reduced-motion: reduce) {
