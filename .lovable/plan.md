@@ -57,7 +57,7 @@ Landing page profissional de vendas em português BR, com estilo "Azul Viagem" (
 ### 8. 🎯 CTA Final
 - Seção de fechamento com urgência
 - Botão grande: **"GARANTIR MINHA VAGA AGORA"** → link Hotmart
-- Reforço da garantia de 7 dias
+- Reforço da garantia de 7 dias 
 
 ---
 
