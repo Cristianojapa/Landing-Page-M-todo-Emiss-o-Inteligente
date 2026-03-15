@@ -16,8 +16,8 @@ const FeedbackVideoSection = () => {
             </div>
 
             <div className="relative overflow-hidden rounded-[26px] border border-white/10">
-              <video className="h-full w-full" controls preload="metadata" playsInline>
-                <source src="/feedback-video.mp4" type="video/mp4" />
+              <video className="h-full w-full object-cover rounded-[26px]" controls preload="metadata" playsInline>
+                <source src="/feedback-video.mp4#t=0.001" type="video/mp4" />
                 Seu navegador nao suporta videos.
               </video>
               <BorderBeam
