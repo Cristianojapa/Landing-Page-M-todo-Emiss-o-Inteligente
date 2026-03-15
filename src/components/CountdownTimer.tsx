@@ -38,8 +38,8 @@ const CountdownTimer = () => {
 
   return (
     <div className="sticky top-0 z-50 border-b border-white/10 bg-navy-dark/80 backdrop-blur-xl">
-      <div className="container flex flex-col items-center justify-center gap-2 py-2 md:grid md:grid-cols-[1fr_auto] md:items-center">
-        <div className="flex flex-wrap items-center justify-center gap-1.5 text-center md:gap-2 md:justify-start md:text-left">
+      <div className="container flex items-center justify-between gap-2 py-2 md:grid md:grid-cols-[1fr_auto]">
+        <div className="flex items-center gap-1.5 md:gap-2 md:justify-start">
           <span className="inline-flex items-center gap-1 rounded-full border border-gold/25 bg-gold/10 px-1.5 py-0.5 text-[8px] font-semibold uppercase tracking-[0.05em] text-gold md:gap-1.5 md:px-3 md:py-1 md:text-[11px] md:tracking-[0.2em]">
             <Sparkles className="h-2.5 w-2.5 md:h-3 md:w-3" />
             Oferta ativa
@@ -53,7 +53,7 @@ const CountdownTimer = () => {
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-1.5 md:gap-2 md:justify-end">
+        <div className="flex items-center gap-1.5 md:gap-2 md:justify-end">
           {segments.map((item) => (
             <div
               key={item.label}
