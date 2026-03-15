@@ -1,4 +1,4 @@
-﻿import { useRef } from "react";
+import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import {
   ArrowRight,
@@ -91,11 +91,11 @@ const HeroSection = () => {
           transition={{ duration: 0.65 }}
         >
           <div className="flex items-center gap-4">
-            <div className="gold-glow flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl border border-gold/20 bg-white p-0">
+            <div className="gold-glow flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-gold/20 bg-white p-1 md:h-16 md:w-16">
               <img
                 src="/images/course-cover.webp"
                 alt="Capa do curso Metodo Emissao Inteligente"
-                className="h-full w-full object-cover"
+                className="h-full w-full object-contain"
               />
             </div>
             <div>
