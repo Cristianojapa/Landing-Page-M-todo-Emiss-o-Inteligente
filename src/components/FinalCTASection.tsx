@@ -51,7 +51,7 @@ const FinalCTASection = () => {
               className="gold-glow btn-shimmer mt-10 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-gold to-gold-light px-10 py-5 font-heading text-base font-extrabold text-primary-foreground transition-transform duration-300 hover:scale-[1.03]"
               whileHover={{ scale: 1.03 }}
             >
-              garantir minha vaga agora
+              GARANTIR MINHA VAGA AGORA
               <ArrowRight className="h-4 w-4" />
             </motion.a>
 
