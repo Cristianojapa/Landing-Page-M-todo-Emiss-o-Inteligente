@@ -47,9 +47,13 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block bg-primary/20 text-gold font-heading font-semibold text-sm px-4 py-1.5 rounded-full mb-6 tracking-wide">
-              MEI Método Emissao inteligente
-            </span>
+            <div className="inline-flex items-center gap-4 mb-6 bg-gradient-to-r from-gold/10 via-gold/5 to-transparent backdrop-blur-sm border border-gold/30 rounded-2xl px-5 py-3 shadow-[0_0_20px_rgba(212,175,55,0.15)]">
+              <img src="/Método Emissão de milhas inteligente.jpeg" alt="MEI" className="h-10 w-10 rounded-lg object-cover ring-2 ring-gold/40 shadow-md" />
+              <div className="flex flex-col">
+                <span className="text-gold font-heading font-bold text-sm tracking-wider uppercase">Método Emissão Inteligente</span>
+                <span className="text-muted-foreground text-xs">Curso de Milhas</span>
+              </div>
+            </div>
 
             <BlurIn className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight mb-6 mt-4">
               Aprenda a Viajar Pagando até{" "}
