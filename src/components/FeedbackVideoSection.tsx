@@ -35,9 +35,8 @@ const FeedbackVideoSection = () => {
                             controls
                             preload="metadata"
                             playsInline
-                            poster=""
                         >
-                            <source src="/Feedback video.mp4" type="video/mp4" />
+                            <source src="/Feedback video.mp4#t=0.5" type="video/mp4" />
                             Seu navegador não suporta vídeos.
                         </video>
                     </div>
