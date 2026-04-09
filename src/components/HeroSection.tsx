@@ -51,7 +51,7 @@ const HeroSection = () => {
               <img src="/Método Emissão de milhas inteligente.jpeg" alt="MEI" className="h-10 w-10 rounded-lg object-cover ring-2 ring-gold/40 shadow-md" />
               <div className="flex flex-col">
                 <span className="text-gold font-heading font-bold text-sm tracking-wider uppercase">Método Emissão Inteligente</span>
-                <span className="text-muted-foreground text-xs">Curso de Milhas</span>
+                <span className="text-muted-foreground text-xs">Aprenda milhas sem complicação</span>
               </div>
             </div>
 
