@@ -30,7 +30,7 @@ const FinalCTASection = () => {
               eyebrow="Ultima chamada"
               title="Pronto para viajar"
               highlight="pagando menos?"
-              description="Entre agora no Metodo Emissao Inteligente e comece a transformar seus gastos em passagens mais baratas."
+              description="Entre agora no Método Emissao Inteligente e comece a transformar seus gastos em viagens mais baratas."
             />
 
             <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground">
