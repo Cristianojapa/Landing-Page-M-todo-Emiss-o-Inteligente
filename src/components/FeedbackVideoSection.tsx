@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
+import { Volume2, VolumeX } from "lucide-react";
 
 const FeedbackVideoSection = () => {
     const videoRef = useRef<HTMLVideoElement>(null);
+    const [isMuted, setIsMuted] = useState(false);
+    const [showUnmute, setShowUnmute] = useState(false);
 
     useEffect(() => {
         const video = videoRef.current;
@@ -11,17 +14,33 @@ const FeedbackVideoSection = () => {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
-                    video.play().catch(() => {});
+                    // Try playing with sound first
+                    video.muted = false;
+                    video.play().catch(() => {
+                        // Browser blocked unmuted autoplay — fallback to muted
+                        video.muted = true;
+                        setIsMuted(true);
+                        setShowUnmute(true);
+                        video.play().catch(() => {});
+                    });
                 } else {
                     video.pause();
                 }
             },
-            { threshold: 0.5 }
+            { threshold: 0.4 }
         );
 
         observer.observe(video);
         return () => observer.disconnect();
     }, []);
+
+    const handleUnmute = () => {
+        const video = videoRef.current;
+        if (!video) return;
+        video.muted = false;
+        setIsMuted(false);
+        setShowUnmute(false);
+    };
 
     return (
         <section className="py-16 md:py-24 bg-navy-dark/30">
@@ -56,13 +75,23 @@ const FeedbackVideoSection = () => {
                             ref={videoRef}
                             className="w-full h-auto"
                             controls
-                            muted
                             playsInline
                             preload="auto"
                         >
                             <source src="/Feedback video.mp4#t=0.5" type="video/mp4" />
                             Seu navegador não suporta vídeos.
                         </video>
+
+                        {/* Unmute overlay button */}
+                        {showUnmute && isMuted && (
+                            <button
+                                onClick={handleUnmute}
+                                className="absolute top-3 right-3 z-20 flex items-center gap-2 px-4 py-2 rounded-full bg-gold text-navy-dark font-semibold text-sm shadow-lg hover:bg-gold/90 transition-all duration-200 animate-pulse"
+                            >
+                                <VolumeX className="w-4 h-4" />
+                                Toque para ativar o som
+                            </button>
+                        )}
                     </div>
                 </motion.div>
             </div>
