@@ -7,99 +7,98 @@ import feedback4 from "@/assets/feedback-4.png";
 import feedback5 from "@/assets/feedback-5.png";
 
 const feedbacks = [feedback1, feedback2, feedback3, feedback4, feedback5];
-const allFeedbacks = [...feedbacks, ...feedbacks];
 
 // ── Section ───────────────────────────────────────────────────────────────────
 const TestimonialsSection = () => {
   return (
-    <section className="py-12 md:py-24 bg-navy-dark/50 overflow-hidden">
-      <div className="container mx-auto px-4 max-w-7xl">
+    <section className="py-16 md:py-24 bg-navy-dark relative overflow-hidden flex flex-col items-center">
+      {/* Background glow for premium feel */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[500px] bg-gold/10 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="container mx-auto px-4 max-w-5xl relative z-10">
         {/* Header */}
         <motion.div
-          className="text-center mb-8 md:mb-10"
+          className="text-center mb-8 md:mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="flex items-center justify-center gap-1 mb-3">
+          <div className="flex items-center justify-center gap-1 mb-4">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-4 h-4 md:w-5 md:h-5 fill-gold text-gold" />
+              <Star key={i} className="w-5 h-5 fill-gold text-gold" />
             ))}
           </div>
 
-          <h2 className="font-heading font-bold text-2xl md:text-4xl mb-3">
+          <h2 className="font-heading font-bold text-3xl md:text-5xl mb-4">
             O Que Nossos Alunos <span className="text-gold">Dizem</span>
           </h2>
 
-          <p className="text-muted-foreground text-base md:text-lg max-w-xl mx-auto">
-            Resultados reais de pessoas como você
+          <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto">
+            Resultados reais de pessoas que já aplicam o método
           </p>
         </motion.div>
 
         {/* Badge */}
         <motion.div
-          className="flex justify-center mb-8"
+          className="flex justify-center mb-10"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.15, duration: 0.4 }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold/30 bg-gold/10 text-gold text-sm font-medium">
-            <Quote className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-gold/30 bg-gold/10 text-gold text-sm md:text-base font-semibold shadow-[0_0_15px_rgba(212,175,55,0.15)]">
+            <Quote className="w-4 h-4" />
             +500 alunos satisfeitos
           </div>
         </motion.div>
 
-        {/* Single marquee row */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-        >
-          <div className="relative w-full overflow-hidden marquee-wrapper py-2">
-            {/* Fade edges — narrower on mobile */}
-            <div className="absolute inset-y-0 left-0 w-10 sm:w-20 md:w-40 bg-gradient-to-r from-navy-dark to-transparent z-10 pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-10 sm:w-20 md:w-40 bg-gradient-to-l from-navy-dark to-transparent z-10 pointer-events-none" />
+        {/* Static Layout Container */}
+        <div className="flex flex-col gap-6 md:gap-8 items-center w-full">
+          {/* Top Big Feedback */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="w-full max-w-lg md:max-w-3xl"
+          >
+            <div className="relative rounded-2xl md:rounded-3xl overflow-hidden border border-white/10 hover:border-gold/40 bg-navy/90 transition-all duration-500 hover:shadow-[0_10px_40px_-10px_rgba(212,175,55,0.15)] hover:-translate-y-1 p-3 md:p-5 group">
+              <img
+                src={feedbacks[0]}
+                alt="Depoimento Principal"
+                className="w-full h-auto object-contain rounded-xl transition-opacity duration-300"
+                loading="lazy"
+                draggable={false}
+              />
+              <div className="absolute inset-0 border-2 border-transparent group-hover:border-gold/20 rounded-2xl md:rounded-3xl transition-colors duration-500 pointer-events-none"></div>
+            </div>
+          </motion.div>
 
-            <div className="flex gap-3 md:gap-4 w-max items-center animate-marquee-left">
-              {allFeedbacks.map((img, i) => (
-                <div
-                  key={i}
-                  className="
-                    w-[200px] sm:w-[260px] md:w-[310px]
-                    flex-shrink-0 rounded-xl md:rounded-2xl overflow-hidden
-                    border border-white/10 hover:border-gold/40
-                    bg-navy/70 backdrop-blur-sm
-                    transition-all duration-300
-                    hover:scale-[1.03] hover:shadow-2xl hover:shadow-gold/10
-                    p-2 cursor-default select-none group
-                  "
-                >
+          {/* Bottom Grid for Smaller Feedbacks */}
+          <div className="grid grid-cols-2 gap-3 md:gap-6 w-full max-w-lg md:max-w-4xl">
+            {feedbacks.slice(1).map((img, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 + i * 0.1, duration: 0.5 }}
+                className="h-full"
+              >
+                <div className="h-full rounded-xl md:rounded-2xl overflow-hidden border border-white/10 hover:border-gold/30 bg-navy/80 transition-all duration-300 hover:shadow-xl hover:shadow-gold/10 hover:-translate-y-1 p-2 md:p-4 flex items-center justify-center group">
                   <img
                     src={img}
-                    alt={`Depoimento de aluno ${(i % feedbacks.length) + 1}`}
-                    className="w-full h-auto object-contain rounded-lg opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                    alt={`Depoimento ${i + 2}`}
+                    className="w-full max-w-[250px] h-auto object-contain rounded-lg transition-opacity duration-300"
                     loading="lazy"
                     draggable={false}
                   />
                 </div>
-              ))}
-            </div>
+              </motion.div>
+            ))}
           </div>
-        </motion.div>
-
-        {/* Hint — hidden on mobile to save space */}
-        <motion.p
-          className="hidden md:block text-center text-muted-foreground/50 text-sm mt-6"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-        >
-          Passe o mouse para pausar
-        </motion.p>
+        </div>
       </div>
     </section>
   );
