@@ -90,7 +90,7 @@ const TestimonialsSection = () => {
                   <img
                     src={img}
                     alt={`Depoimento ${i + 2}`}
-                    className="w-full max-w-[250px] h-auto object-contain rounded-lg transition-opacity duration-300"
+                    className="w-full h-auto object-contain rounded-lg transition-opacity duration-300"
                     loading="lazy"
                     draggable={false}
                   />
