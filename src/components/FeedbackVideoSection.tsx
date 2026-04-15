@@ -1,6 +1,28 @@
 import { motion } from "framer-motion";
+import { useRef, useEffect } from "react";
 
 const FeedbackVideoSection = () => {
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    video.play().catch(() => {});
+                } else {
+                    video.pause();
+                }
+            },
+            { threshold: 0.5 }
+        );
+
+        observer.observe(video);
+        return () => observer.disconnect();
+    }, []);
+
     return (
         <section className="py-16 md:py-24 bg-navy-dark/30">
             <div className="container mx-auto px-4">
@@ -31,10 +53,12 @@ const FeedbackVideoSection = () => {
                 >
                     <div className="relative rounded-2xl overflow-hidden border border-border hover:border-gold/30 transition-colors shadow-2xl shadow-gold/5">
                         <video
+                            ref={videoRef}
                             className="w-full h-auto"
                             controls
-                            preload="metadata"
+                            muted
                             playsInline
+                            preload="auto"
                         >
                             <source src="/Feedback video.mp4#t=0.5" type="video/mp4" />
                             Seu navegador não suporta vídeos.
