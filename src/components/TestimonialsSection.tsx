@@ -4,9 +4,8 @@ import feedback1 from "@/assets/feedback-1.png";
 import feedback2 from "@/assets/feedback-2.png";
 import feedback3 from "@/assets/feedback-3.png";
 import feedback4 from "@/assets/feedback-4.png";
-import feedback5 from "@/assets/feedback-5.png";
 
-const feedbacks = [feedback1, feedback2, feedback3, feedback4, feedback5];
+const feedbacks = [feedback1, feedback2, feedback3, feedback4];
 
 // ── Section ───────────────────────────────────────────────────────────────────
 const TestimonialsSection = () => {
@@ -53,51 +52,29 @@ const TestimonialsSection = () => {
           </div>
         </motion.div>
 
-        {/* Static Layout Container */}
-        <div className="flex flex-col gap-6 md:gap-8 items-center w-full">
-          {/* Top Big Feedback */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="w-full max-w-lg md:max-w-3xl"
-          >
-            <div className="relative rounded-2xl md:rounded-3xl overflow-hidden border border-white/10 hover:border-gold/40 bg-navy/90 transition-all duration-500 hover:shadow-[0_10px_40px_-10px_rgba(212,175,55,0.15)] hover:-translate-y-1 p-3 md:p-5 group">
-              <img
-                src={feedbacks[0]}
-                alt="Depoimento Principal"
-                className="w-full h-auto object-contain rounded-xl transition-opacity duration-300"
-                loading="lazy"
-                draggable={false}
-              />
-              <div className="absolute inset-0 border-2 border-transparent group-hover:border-gold/20 rounded-2xl md:rounded-3xl transition-colors duration-500 pointer-events-none"></div>
-            </div>
-          </motion.div>
-
-          {/* Bottom Grid for Smaller Feedbacks */}
-          <div className="grid grid-cols-2 gap-3 md:gap-6 w-full max-w-lg md:max-w-4xl">
-            {feedbacks.slice(1).map((img, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 + i * 0.1, duration: 0.5 }}
-                className="h-full"
-              >
-                <div className="h-full rounded-xl md:rounded-2xl overflow-hidden border border-white/10 hover:border-gold/30 bg-navy/80 transition-all duration-300 hover:shadow-xl hover:shadow-gold/10 hover:-translate-y-1 p-2 md:p-4 flex items-center justify-center group">
-                  <img
-                    src={img}
-                    alt={`Depoimento ${i + 2}`}
-                    className="w-full h-auto object-contain rounded-lg transition-opacity duration-300"
-                    loading="lazy"
-                    draggable={false}
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </div>
+        {/* Symmetric 2x2 Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-full max-w-5xl">
+          {feedbacks.map((img, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              className="group h-full"
+            >
+              <div className="h-full relative rounded-2xl md:rounded-3xl overflow-hidden border border-white/10 hover:border-gold/40 bg-navy/90 transition-all duration-500 hover:shadow-[0_10px_40px_-10px_rgba(212,175,55,0.15)] hover:-translate-y-1 p-3 md:p-5 flex items-center justify-center">
+                <img
+                  src={img}
+                  alt={`Depoimento ${i + 1}`}
+                  className="w-full h-auto object-contain rounded-xl transition-opacity duration-300"
+                  loading="lazy"
+                  draggable={false}
+                />
+                <div className="absolute inset-0 border-2 border-transparent group-hover:border-gold/20 rounded-2xl md:rounded-3xl transition-colors duration-500 pointer-events-none"></div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
