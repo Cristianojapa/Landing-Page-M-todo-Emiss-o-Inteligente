@@ -52,8 +52,8 @@ const TestimonialsSection = () => {
           </div>
         </motion.div>
 
-        {/* Symmetric Grid Layout - Stacked on Mobile, 2x2 on Desktop */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-full max-w-5xl">
+        {/* Symmetric Grid Layout - More compact */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 w-full max-w-4xl">
           {feedbacks.map((img, i) => (
             <motion.div
               key={i}
@@ -63,7 +63,7 @@ const TestimonialsSection = () => {
               transition={{ delay: i * 0.1, duration: 0.5 }}
               className="group h-full"
             >
-              <div className="h-full relative rounded-2xl md:rounded-3xl overflow-hidden border border-white/10 hover:border-gold/40 bg-navy/90 transition-all duration-500 hover:shadow-[0_10px_40px_-10px_rgba(212,175,55,0.15)] hover:-translate-y-1 p-3 md:p-5 flex items-center justify-center">
+              <div className="h-full relative rounded-2xl md:rounded-3xl overflow-hidden border border-white/10 hover:border-gold/40 bg-navy/90 transition-all duration-500 hover:shadow-[0_10px_40px_-10px_rgba(212,175,55,0.15)] hover:-translate-y-1 p-3 md:p-4 flex items-center justify-center">
                 <img
                   src={img}
                   alt={`Depoimento ${i + 1}`}
