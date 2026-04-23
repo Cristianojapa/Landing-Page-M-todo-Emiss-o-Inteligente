@@ -52,8 +52,8 @@ const TestimonialsSection = () => {
           </div>
         </motion.div>
 
-        {/* Symmetric 2x2 Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-full max-w-5xl">
+        {/* Symmetric 2x2 Grid Layout - Forced on Mobile */}
+        <div className="grid grid-cols-2 gap-3 md:gap-8 w-full max-w-5xl">
           {feedbacks.map((img, i) => (
             <motion.div
               key={i}
