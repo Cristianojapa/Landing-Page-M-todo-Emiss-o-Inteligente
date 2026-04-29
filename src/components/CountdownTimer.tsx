@@ -2,22 +2,38 @@ import { useState, useEffect } from "react";
 
 const CountdownTimer = () => {
   const [timeLeft, setTimeLeft] = useState(() => {
+    const DURATION = 24 * 60 * 60 * 1000; // 24 hours
     const saved = localStorage.getItem("cmi-countdown-end");
+    const now = Date.now();
+
     if (saved) {
-      const diff = Math.max(0, Math.floor((Number(saved) - Date.now()) / 1000));
-      return diff;
+      const endTime = Number(saved);
+      if (now >= endTime) {
+        const newEnd = now + DURATION;
+        localStorage.setItem("cmi-countdown-end", String(newEnd));
+        return Math.floor(DURATION / 1000);
+      }
+      return Math.floor((endTime - now) / 1000);
     }
-    // 24 hours from now
-    const end = Date.now() + 24 * 60 * 60 * 1000;
+    
+    const end = now + DURATION;
     localStorage.setItem("cmi-countdown-end", String(end));
-    return 24 * 60 * 60;
+    return Math.floor(DURATION / 1000);
   });
 
   useEffect(() => {
-    if (timeLeft <= 0) return;
-    const timer = setInterval(() => setTimeLeft((t) => Math.max(0, t - 1)), 1000);
+    const timer = setInterval(() => {
+      setTimeLeft((t) => {
+        if (t <= 1) {
+          const newEnd = Date.now() + 24 * 60 * 60 * 1000;
+          localStorage.setItem("cmi-countdown-end", String(newEnd));
+          return 24 * 60 * 60;
+        }
+        return t - 1;
+      });
+    }, 1000);
     return () => clearInterval(timer);
-  }, [timeLeft]);
+  }, []);
 
   const hours = Math.floor(timeLeft / 3600);
   const minutes = Math.floor((timeLeft % 3600) / 60);

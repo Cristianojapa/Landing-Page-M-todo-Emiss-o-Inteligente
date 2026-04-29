@@ -28,7 +28,7 @@ const AboutSection = () => {
               Quem é <span className="text-gold">Rubia Lemos?</span>
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Com mais de <strong className="text-foreground">10 anos de experiência</strong> no mercado digital e na Hotmart, Rubia se tornou referência quando o assunto é <strong className="text-foreground">milhas aéreas</strong>.
+              Com mais de <strong className="text-foreground">10 anos de experiência</strong> no mercado de milhas e cursos na Hotmart, Rubia se tornou referência quando o assunto é <strong className="text-foreground">milhas aéreas</strong>.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Ela já ajudou centenas de alunos a economizar milhares de reais em viagens, transformando gastos do dia a dia em passagens aéreas com até 90% de desconto.
